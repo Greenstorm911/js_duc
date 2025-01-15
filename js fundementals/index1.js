@@ -663,7 +663,7 @@ function walk() {
 const run = function() {
     console.log('fck Brendan Eich');
 }
-// anmed  experssion 
+// named  experssion 
 const run2 = function walk() {
     console.log('fck Brendan Eich');
 }
