@@ -150,3 +150,108 @@ if ('name' in person1)
     // prototype is just a regualr boject 
     // in js engine it first search for the perperty in that object and then looks for it in the object that it inhartance from
     let myArray = []; // it inhrtance from myArray arrayBase and it inhetance from objectbase this is called multi levl inhrtance
+
+
+let person3 = { name: 'parsa'};
+for (let key in person3)
+    console.log(key) // this returns only the name key and not the object base that is its prototype thats becase the perpertiys of object base is noniterable we can implant the same logic for the perpertys that we want
+
+let objectbase = Object.getPrototypeOf(person3);
+let descryptor = Object.getOwnPropertyDescriptor(objectbase, 'toString');
+console.log(descryptor);
+/*
+{writable: true, enumerable: false, configurable: true, value: ƒ}
+configurable // it means that it can be delated
+:  
+true
+enumerable // it means its not iterable
+: 
+false
+value
+: 
+ƒ toString()
+writable // this means it can be overwrite 
+: 
+true
+[[Prototype]]
+: 
+Object
+
+*/
+Object.defineProperty(person3, 'name', {
+    // get 
+    // set 
+    writable:false,
+    enumerable:false,
+    configurable:false
+})
+
+
+//
+    // Prototypical Inheritance bullshit
+//
+
+
+// classs are constracor functions
+class CircleClass {
+    constructor(redius){
+        this.redius = redius;
+    }
+    // if we define a method here it will be in the protetye
+    draw(){
+        console.log('draw');
+        
+    }
+}
+
+// it will error auto about new
+let circle = new CircleClass(2);
+circle.draw() 
+
+// function declaretion 
+    function syaHello(){} // this will be hoisted and go to top
+
+// function expertion
+    let sayHello2 = function(){}; // this will not move to top and we cant call it 
+
+
+// class delaration 
+class Circle{} // this will be hoisted to (better way no reason to use expersion)
+
+// class expertion
+let Circle2 = class {} // this will not be hoisted
+
+
+
+
+class Circle3 {
+    constructor(redius){
+        this.redius = redius
+    }
+    static pars(str){
+        console.log(str);
+        
+        let redius = JSON.parse(str).redius;
+        console.log(redius);
+        
+        return new Circle3(redius)
+    }
+}
+
+let circle4 = Circle3.pars('{"redius": 1}')
+console.log(circle4);
+
+// 'use strict' doesnt 
+// body of class methods will automaticly use strict mode
+
+
+// makeing a privte method or a property
+
+class Circle5 {
+    constructor(redius){
+        this[_redius] = redius; 
+    }
+    [_draw](){
+        
+    }
+}
