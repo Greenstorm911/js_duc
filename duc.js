@@ -369,3 +369,110 @@ let product = {
     // secend way 
         let combined2 = [...array1, 'in the middle' ,...array2]; // BEST WAY
 
+
+
+// createing a slice of an array 
+    let items = ['book', 'phone', 'lap top', 'glasses', 'notebook'];
+    let slice = items.slice(2, 5);
+
+
+// foreach 
+    items.forEach(item => console.log(item));
+    items.forEach((item, index) => console.log(`index: ${index} - item: ${item}`));
+    let joined = items.join(' ');
+
+
+// sort
+    items.sort()
+    items.reverse()
+
+// sort for objects
+    let users = [
+        {id: 1, name: 'mansour'},
+        {id: 2, name: 'mamal'},
+        {id: 3, name: 'parsa'}
+    ]
+    users.sort((user1, user2) => {
+        if (user1.id > user2.id) return -1
+        if (user1.id < user2.id) return 1
+        return 0
+    })
+
+
+// more array methods
+    let numbersArray1 = [-1, -5, -3, 1, 7, 2];
+    let allPositive = numbersArray1.every(number => number >= 0);
+    let atLeastOnePostive = numbersArray1.some(number => number >= 0);
+    let posstiveNumbers = numbersArray1.filter(number => number >= 0);
+    let htmlTable = numbersArray1.map(number => '<li>' + number + '</li>').join('\n');
+    let sum = numbersArray1.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+
+
+// practices
+    // recreate include 
+    // create except
+    // counter elemnt of an array
+    // find max an array
+    // movie practice 
+    // sum an array useing reduce
+
+
+// function arguments
+    function sumWitharguments(){
+        for (value of arguments) console.log(value);
+    }
+    sumWitharguments(1, 2, 'asdf')
+    // argeuments is an object here but becase it has an itter we can use for-of
+
+    // useing the rest operator
+    function testFounction(arg1, ...args){
+        // args here is an array so we can use array methods like reduce
+    }
+
+    // we can set defult value for an argument like here
+    function setDefulat(pi = 3.13){
+
+    }
+    // we also can override the defualt values
+
+
+// createing a an object with a new filed with getter and setter
+
+    let mansourObj = {
+        name: 'mansour',
+        lastName: 'marzban',
+        get fullName(){
+            return this.name + ' ' + this.lastName
+        },
+        set fullName(value){
+            if (typeof value !== 'string')
+                throw new Error('input should be an string');
+            let inputArray = value.split();
+            if (inputArray.length !== 2)
+                throw new Error('input a valid fullname');
+            this.name = inputArray[0];
+            this.lastName = inputArray[1];
+        }
+    }
+        
+    try {
+        mansourObj.fullName = ''
+    }
+    catch(e){
+        console.error(`error: ${e}`)
+    }
+
+// playVideo.call({ name: 'Mosh' }, 1, 2); 
+// playVideo.apply({ name: 'Mosh' }, [1, 2]);
+// playVideo.bind({ name: 'Mosh' })
+
+
+let movie = {
+    name: 'arcane',
+    carecters: ['jinx', 'vi', 'catelin'],
+    showTags(){
+        this.carecters.forEach((carecter) => console.log(carecter))
+    }
+}
+
+
