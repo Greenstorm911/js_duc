@@ -462,9 +462,6 @@ let product = {
         console.error(`error: ${e}`)
     }
 
-// playVideo.call({ name: 'Mosh' }, 1, 2); 
-// playVideo.apply({ name: 'Mosh' }, [1, 2]);
-// playVideo.bind({ name: 'Mosh' })
 
 
 let movie = {
@@ -476,3 +473,13 @@ let movie = {
 }
 
 
+// apply and call are the same but apply gets an argument
+    // let person2 = new CreatePerson('parsa', 100);
+    // CreatePerson.call({}, 'parsa', 100);
+    // CreatePerson.apply({}, ['parsa', 100]);
+
+
+
+// this two wrong lines are the same and both refrence to the window object 
+    // person2 = CreatePerson('parsa', 100);
+    // CreatePerson.call('parsa', 100)
